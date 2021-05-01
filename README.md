@@ -33,12 +33,14 @@ Make sure you run the following code after creating either a new django app, mod
 python manage.py makemigrations
 python manage.py migrate
 
+Creating Superuser
 
-    After completion, commit your changes using the code command below
+python manage.py createsuperuser
 
-git add .
-git commit -m "commit messsge"
+To run the script:
+python manage.py runscript flights_data
 
-once finished, push your branch to the repository and create a new pull request then move to the code review column
 
-git push -u origin HEAD
+    After completion:
+    
+    Go to localhost:8000/admin/
