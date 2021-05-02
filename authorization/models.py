@@ -1,5 +1,4 @@
-from datetime import datetime, timedelta
-from django.conf import settings
+from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import (
     AbstractBaseUser, BaseUserManager, PermissionsMixin
 )
@@ -121,10 +120,26 @@ class FlightsData(models.Model):
     destination_city_name = models.TextField(null=True, blank=True)
     destination_skyscanner_code = models.CharField(null=True, max_length=10, blank=True)
     departure_date = models.DateTimeField(null=True, blank=True)
+    return_date = models.DateTimeField(null=True, blank=True)
+    trip_type = models.CharField(null=True, blank=True, max_length=30)
     created_on = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     minimum_price = models.PositiveIntegerField(null=True, blank=True)
     is_flight_direct = models.BooleanField(default=True)
     country = models.CharField(null=True, blank=True, max_length=30)
+    within_price_range = models.BooleanField(null=True, blank=True)
+
+
+class OrdersData(models.Model):
+    TRIP_CHOICE = (
+        ("round_trip", _("round_trip")),
+        ("one_way", _("one_way"))
+    )
+    origin_city = models.CharField(null=True, blank=True, max_length=5)
+    destination_city = models.CharField(null=True, blank=True, max_length=5)
+    trip_type = models.CharField(choices=TRIP_CHOICE, null=True, blank=True, max_length=60)
+    trip_start_date = models.DateField(null=True, blank=True)
+    trip_price = models.PositiveIntegerField(null=True, blank=True)
+    trip_return_day_interval = models.PositiveIntegerField(null=True, blank=True)
 
 
 
