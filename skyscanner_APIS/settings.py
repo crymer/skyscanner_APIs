@@ -79,9 +79,9 @@ AUTH_USER_MODEL = 'authorization.User'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': "flights_db",
-        'USER': "sqldev",
-        'PASSWORD': "sqlpass",
+        'NAME': "postgres",
+        'USER': "postgres",
+        'PASSWORD': "Welcome123!!",
         'HOST': "localhost",
         'PORT': 5432
     }
