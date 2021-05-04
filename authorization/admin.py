@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import *
+from .models import FlightsData, OrdersData
 
 # Register your models here.
 @admin.register(FlightsData)
@@ -15,4 +15,13 @@ class FlightDataAdmin(admin.ModelAdmin):
                      'carrier_name')
 
 
-admin.site.register(OrdersData)
+def order_dict(modeladmin, request, queryset):
+    for x in queryset:
+        print(x.__dict__)
+order_dict.short_description = 'Ordaaaa Dict'
+
+class OrdersDataAdmin(admin.ModelAdmin):
+    list_display = ('id', 'origin_city', 'destination_city', 'trip_start_date', 'trip_price')
+    actions =[order_dict, ]
+
+admin.site.register(OrdersData, OrdersDataAdmin)

@@ -22,8 +22,7 @@ def create_order_data():
     return order_obj
 
 
-def insert_into_flights_db():
-    order_var = create_order_data()
+def insert_into_flights_db(order_var):
 
     headers = {
         'x-rapidapi-key': "193ace48b5msh63f93010b6db4a1p141edbjsn689f3f56a4d0",
@@ -87,4 +86,5 @@ def insert_into_flights_db():
 
 
 def run():
-    insert_into_flights_db()
+    test_order_var = create_order_data()
+    insert_into_flights_db(test_order_var)
